@@ -1,0 +1,37 @@
+# Byte-compiled / compiled files
+__pycache__/
+*.py[cod]
+*.so
+*.egg
+*.egg-info/
+
+# Environments
+env/
+venv/
+.myenv/
+.venv/
+.ipynb_checkpoints/
+
+# Mac-specific files
+.DS_Store
+
+# Data or large files
+data/raw/
+data/processed/
+*.csv
+*.h5
+*.pt
+
+# Notebook checkpoints
+.ipynb_checkpoints/
+
+# PyTest cache
+.pytest_cache/
+
+# VSCode-specific (optional, if you want to keep your .vscode settings private)
+.vscode/
+
+# Logs
+*.log
+
+# If you have any other logs or secrets, add them here
