@@ -13,7 +13,7 @@ from torch_geometric.nn import (
     global_max_pool,
     GlobalAttention
 )
-from src.data_utils import get_activation_fn, get_activation_module
+from data_utils import get_activation_fn, get_activation_module
 
 ###############################################################################
 # Pooling Helpers
