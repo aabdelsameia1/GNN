@@ -2,9 +2,9 @@
 
 import torch
 import torch.nn as nn
-from data_utils import get_zinc_dataset
-from model import get_model
-from train import train_one_epoch, evaluate
+from src.data_utils import get_zinc_dataset
+from src.model import get_model
+from src.train import train_one_epoch, evaluate
 import argparse
 
 def main():

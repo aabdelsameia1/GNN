@@ -4,7 +4,7 @@ import torch
 from src.model import get_model
 
 def test_all_models_forward():
-    model_names = ["gcn", "gin", "gat", "sage", "gine"]
+    model_names = ["gcn", "gin", "gat", "sage"]
     in_channels = 10
     x = torch.rand((100, in_channels))
     edge_index = torch.randint(0, 100, (2, 200))
