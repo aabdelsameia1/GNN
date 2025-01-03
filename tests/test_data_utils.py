@@ -2,6 +2,7 @@
 
 import pytest
 import torch
+import src.data_utils
 from src.data_utils import get_zinc_dataset
 
 def test_zinc_dataset_loading():
