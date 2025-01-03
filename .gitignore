@@ -16,6 +16,7 @@ venv/
 .DS_Store
 
 # Data or large files
+data/
 data/raw/
 data/processed/
 *.csv
