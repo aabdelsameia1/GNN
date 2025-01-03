@@ -16,12 +16,12 @@ venv/
 .DS_Store
 
 # Data or large files
-data/
 data/raw/
 data/processed/
+data/ZINC
+data/subset
 *.csv
 *.h5
-*.pt
 
 # Notebook checkpoints
 .ipynb_checkpoints/
