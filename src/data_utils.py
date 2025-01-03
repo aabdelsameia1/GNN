@@ -2,49 +2,56 @@
 
 import torch
 from torch_geometric.datasets import ZINC
+from torch_geometric.loader import DataLoader
+import torch.nn.functional as F
+import torch.nn as nn
 
-def load_data(root_dir='data'):
+
+def get_zinc_dataset(root='../data/ZINC', batch_size=64, subset=True):
     """
-    Loads the ZINC dataset using PyTorch Geometric.
+    Loads the ZINC dataset from the specified root directory.
     
     Args:
-        root_dir (str): The directory to download/store the dataset.
-        
-    Returns:
-        tuple: A tuple (train_dataset, val_dataset, test_dataset).
-    """
-    train_dataset = ZINC(root=root_dir, split='train')
-    val_dataset = ZINC(root=root_dir, split='val')
-    test_dataset = ZINC(root=root_dir, split='test')
-    
-    return train_dataset, val_dataset, test_dataset
-
-
-def create_dataloaders(train_dataset, val_dataset, test_dataset, batch_size=32):
-    """
-    Converts datasets into PyTorch dataloaders.
-    
-    Args:
-        train_dataset: PyG or PyTorch dataset for training.
-        val_dataset:   Validation dataset.
-        test_dataset:  Test dataset.
-        batch_size:    Batch size for each split.
+        root (str): Path to the dataset folder.
+        batch_size (int): Batch size for DataLoader.
     
     Returns:
-        tuple: (train_loader, val_loader, test_loader)
+        (DataLoader, DataLoader, DataLoader): train, val, and test loaders.
     """
-    from torch_geometric.loader import DataLoader
+    train_dataset = ZINC(root, split='train', subset=subset)
+    val_dataset = ZINC(root, split='val', subset=subset)
+    test_dataset = ZINC(root, split='test', subset=subset)
     
     train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
-    val_loader   = DataLoader(val_dataset, batch_size=batch_size, shuffle=False)
-    test_loader  = DataLoader(test_dataset, batch_size=batch_size, shuffle=False)
+    val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False)
+    test_loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False)
     
     return train_loader, val_loader, test_loader
 
 
-if __name__ == "__main__":
-    # Quick test to see if data loading works
-    train_ds, val_ds, test_ds = load_data()
-    print("Train samples:", len(train_ds))
-    print("Val samples:", len(val_ds))
-    print("Test samples:", len(test_ds))
+
+def get_activation_fn(name):
+    name = name.lower()
+    if name == 'relu':
+        return F.relu
+    elif name == 'leakyrelu':
+        return F.leaky_relu
+    elif name == 'elu':
+        return F.elu
+    else:
+        raise ValueError(f"Unsupported activation: {name}")
+
+
+def get_activation_module(name):
+    """
+    For usage in nn.Sequential, we need an nn.Module (e.g. nn.ReLU).
+    """
+    name = name.lower()
+    if name == 'relu':
+        return nn.ReLU()
+    elif name == 'leakyrelu':
+        return nn.LeakyReLU(negative_slope=0.2)
+    elif name == 'elu':
+        return nn.ELU()
+    else:
+        raise ValueError(f"Unsupported activation module: {name}")

@@ -3,3 +3,6 @@ torch-geometric
 numpy
 pandas
 pytest
+networkx
+matplotlib
+torch-scatter
