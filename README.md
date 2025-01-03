@@ -98,15 +98,15 @@ Our main focus is to compare different designs (e.g., dropout, attention pooling
 
 ## Key Results
 
-After experimenting with 15 variations (5 architectures \(\times\) 3 parameter configurations each), these are the top highlights:
+After experimenting with 15 variations (5 architectures × 3 parameter configurations each), here are the top highlights:
 
-- **GINE\_V3\_Attn\_Residual\_BN** consistently achieves the \textbf{best performance} with:
-  - \(\mathrm{MSE} \approx 1.0\)
-  - \(\mathrm{MAE} \approx 0.51\)
-  - \(R^2 \approx 0.80\)
-- **Edge-aware models** (\texttt{GINE}) outperform edge-agnostic ones (\texttt{GIN}, \texttt{GCN}, etc.) by leveraging bond attributes.
+- **GINE_V3_Attn_Residual_BN** consistently achieves the **best performance**, approximately:
+  - MSE ≈ 1.0
+  - MAE ≈ 0.51
+  - R² ≈ 0.80
+- **Edge-aware models** (e.g., `GINE`) outperform edge-agnostic ones (`GIN`, `GCN`, etc.) by leveraging bond attributes.
 - **Advanced features** (attention pooling, residual connections, batch normalization) markedly improve generalization and stability.
-- **Larger training subsets** result in higher accuracy for all GNN variants, emphasizing the benefit of more data.
+- **Larger training subsets** lead to higher accuracy for all GNN variants, emphasizing the benefit of more data.
 
 Check `notebooks/Models.ipynb` for detailed plots and logs of all experiments.
 
@@ -114,8 +114,8 @@ Check `notebooks/Models.ipynb` for detailed plots and logs of all experiments.
 
 ## Where to Find Results
 
+- **Reports**: Please find the main report in the reports file. 
 - **notebooks/Models.ipynb**: The central experiments and final performance plots are found here, as used in our paper.  
-- **Command-line runs** (`main.py`): Logs progress and metrics to your console or predefined folders.
 
 ---
 
