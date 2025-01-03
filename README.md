@@ -139,11 +139,15 @@ Check `notebooks/Models.ipynb` for detailed plots and logs of all experiments.
 ## Requirements
 
 - Python 3.8+
-- PyTorch (GPU recommended)
-- PyTorch Geometric
-- NumPy
-- Matplotlib (for plotting)
-- Pytest (for testing)
+- torch
+- torch-geometric
+- numpy
+- pandas
+- pytest
+- networkx
+- matplotlib
+- torch-scatter
+
 
 Install all dependencies via:
 ```bash
