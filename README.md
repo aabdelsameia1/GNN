@@ -74,22 +74,22 @@ Our main focus is to compare different designs (e.g., dropout, attention pooling
 
    - **GIN** (Graph Isomorphism Network):
      ```bash
-     python src/main.py --model_name gin --epochs 10 --batch_size 64
+     python main.py --model_name gin --epochs 10 --batch_size 64
      ```
 
    - **GINE** (GIN + edge attributes):
      ```bash
-     python src/main.py --model_name gine --epochs 10 --batch_size 64 --residual --batch_norm
+     python main.py --model_name gine --epochs 10 --batch_size 64 --residual --batch_norm
      ```
 
    - **GAT** (Graph Attention Network):
      ```bash
-     python src/main.py --model_name gat --epochs 5 --heads 8 --dropout 0.2
+     python main.py --model_name gat --epochs 5 --heads 8 --dropout 0.2
      ```
 
    - **GraphSAGE**:
      ```bash
-     python src/main.py --model_name sage --epochs 20 --lr 0.0005
+     python main.py --model_name sage --epochs 20 --lr 0.0005
      ```
 
    Adjust additional flags such as `--activation`, `--pool`, `--edge_dim`, etc., as desired.
