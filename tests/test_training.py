@@ -2,9 +2,9 @@
 
 import torch
 import torch.nn as nn
-from src.model import get_model
-from src.train import train_one_epoch, evaluate
-from src.data_utils import get_zinc_dataset
+from .src.model import get_model
+from .src.train import train_one_epoch, evaluate
+from .src.data_utils import get_zinc_dataset
 
 def test_train_one_epoch():
     device = torch.device("cpu")
