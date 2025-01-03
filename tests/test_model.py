@@ -1,7 +1,7 @@
 # tests/test_model.py
 
 import torch
-from .src.model import get_model
+from ..src.model import get_model
 
 def test_all_models_forward():
     model_names = ["gcn", "gin", "gat", "sage", "gine"]

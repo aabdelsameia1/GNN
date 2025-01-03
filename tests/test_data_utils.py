@@ -2,7 +2,7 @@
 
 import pytest
 import torch
-from .src.data_utils import get_zinc_dataset
+from ..src.data_utils import get_zinc_dataset
 
 def test_zinc_dataset_loading():
     train_loader, val_loader, test_loader = get_zinc_dataset(batch_size=8)
