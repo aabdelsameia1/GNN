@@ -366,35 +366,6 @@ class SAGEModel(nn.Module):
 
 
 ###############################################################################
-# 6. Graph Transformer (no edge features by default)
-###############################################################################
-class GraphTransformer(nn.Module):
-    """
-    Placeholder for a Graph Transformer approach.
-    Currently does not incorporate edge_attr in attention.
-    """
-    def __init__(self, in_channels, hidden_dim=64, out_channels=1, num_heads=4):
-        super(GraphTransformer, self).__init__()
-        self.encoder = nn.TransformerEncoder(
-            nn.TransformerEncoderLayer(d_model=hidden_dim, nhead=num_heads),
-            num_layers=2
-        )
-        self.lin_in = nn.Linear(in_channels, hidden_dim)
-        self.lin_out = nn.Linear(hidden_dim, out_channels)
-
-    def forward(self, x, edge_index, batch, edge_attr=None):
-        # We ignore edge_index and edge_attr in this placeholder
-        x = self.lin_in(x)
-        x = x.unsqueeze(1)           # [num_nodes, 1, hidden_dim]
-        x = x.permute(0, 1, 2)       # [num_nodes, 1, hidden_dim]
-        x = self.encoder(x)          # [num_nodes, 1, hidden_dim]
-        x = x.squeeze(1)             # [num_nodes, hidden_dim]
-        x = global_mean_pool(x, batch)
-        x = self.lin_out(x)
-        return x
-
-
-###############################################################################
 # 7. Factory Method
 ###############################################################################
 def get_model(
@@ -473,13 +444,6 @@ def get_model(
             pool=pool,
             residual=residual,
             batch_norm=batch_norm
-        )
-    elif model_name == 'transformer':
-        return GraphTransformer(
-            in_channels,
-            hidden_dim,
-            out_channels,
-            num_heads=heads
         )
     else:
         raise ValueError(f"Unknown model name: {model_name}.")
